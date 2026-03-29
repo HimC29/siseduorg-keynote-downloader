@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 300px;
+    min-height: 200px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f9f9f9;
+    color: #1a1a1a;
+    position: relative;
+}
+
+/* --- Overlay --- */
+#greyed {
+    display: none;
+    position: absolute;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: white;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
+    z-index: 999;
+    padding: 1rem;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+header h1 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* --- Main content --- */
+main {
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.hint {
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* --- Button --- */
+#download {
+    width: 100%;
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+#download:hover {
+    background: #1d4ed8;
+}
+
+#download:active {
+    background: #1e40af;
+}
+
+/* --- Status --- */
+#status {
+    font-size: 0.82rem;
+    color: #16a34a;
+    text-align: center;
+    min-height: 1.2em;
+}
