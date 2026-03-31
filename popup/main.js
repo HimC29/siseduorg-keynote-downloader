@@ -1,3 +1,10 @@
+/*
+sisedu.org Keynote Downloader
+
+MIT License
+Copyright (c) 2026 Him C. <himc.29z@gmail.com>
+*/
+
 const status = document.getElementById("status");
 
 // Restore status from storage when popup reopens
