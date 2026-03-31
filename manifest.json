@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "sisedu.org Keynote Downloader",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Download keynotes on sisedu.org as PDF easily with a click of a button.",
     "permissions": ["scripting", "activeTab", "tabs", "storage"],
     "icons": {

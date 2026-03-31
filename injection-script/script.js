@@ -20,20 +20,35 @@ async function getKeynoteInfo() {
     return { name, uuid, grade, subject };
 }
 
+async function findPdfUrl(subject, grade, uuid) {
+    // try from network entries first
+    const entries = performance.getEntriesByType("resource");
+    const fromNetwork = entries
+        .map(e => e.name)
+        .find(url => url.includes(subject) && url.includes(uuid));
+
+    if(fromNetwork)
+        return fromNetwork;
+
+    // fall back to constructed URL
+    return `https://supabase.sisedu.org/storage/v1/object/public/coursework/${subject}/${grade}/${uuid}.pdf`;
+}
+
 (async () => {
     chrome.runtime.sendMessage({ status: "Fetching keynote info..." });
-    console.log("Fetching keynote info...");
 
     const { name, uuid, grade, subject } = await getKeynoteInfo();
-    const url = `https://supabase.sisedu.org/storage/v1/object/public/coursework/${subject}/${grade}/${uuid}.pdf`;
+    const url = await findPdfUrl(subject, grade, uuid);
 
-    chrome.runtime.sendMessage({ status: `Fetching PDF...` });
+    chrome.runtime.sendMessage({ status: "Fetching PDF..." });
     console.log("Fetching:", url);
 
     const res = await fetch(url);
     if(!res.ok) {
+        chrome.runtime.sendMessage({ status: `Failed: ${res.status}` });
         console.log("Failed to fetch PDF:", res.status);
-    } else {
+    }
+    else {
         const blob = await res.blob();
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);

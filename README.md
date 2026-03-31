@@ -151,6 +151,11 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.1
+- 🔧 Fixed wrong PDF being downloaded on some keynotes
+- 🔍 Now checks network requests first before falling back to constructed URL
+- ⚠️ Better error status shown in popup on failed downloads
+
 ### v1.0.0
 - 🎉 Initial release
 - One-click PDF download from keynote editor pages
