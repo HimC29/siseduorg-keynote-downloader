@@ -2,14 +2,14 @@
 
 # 📄 sisedu.org Keynote Downloader
 
-### A Chrome Extension to Download Keynotes from sisedu.org as PDF
+### A Browser Extension to Download Keynotes from sisedu.org as PDF
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/)
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://extensionworkshop.com/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
-**A lightweight Chrome extension that lets you download any keynote on sisedu.org as a PDF with a single click — no fiddling with the site required.**
+**A lightweight browser extension that lets you download any keynote on sisedu.org as a PDF with a single click — no fiddling with the site required.**
 
 [Features](#-features) • [Installation](#-installation) • [How It Works](#-how-it-works) • [Project Structure](#-project-structure) • [Contributing](#-contributing)
 
@@ -41,7 +41,7 @@ No external dependencies, pure vanilla JS
 🎨 **Clean UI**  
 Simple, modern popup with clear status feedback
 
-🛡️ **Background Worker**  
+🛡 **Background Worker**  
 Uses a service worker so downloads aren't interrupted
 
 </td>
@@ -58,11 +58,13 @@ sisedu.org provides **no way to download keynotes** — there's no download butt
 - 📦 **No manual digging** — No need to hunt through network requests or page source for the PDF URL
 - ⚡ **One click** — Open the extension, click download, done
 - 🔓 **Open source** — See exactly what the extension does and how it works
-- 🛠️ **Learning project** — Built to learn Chrome Extension development with Manifest V3
+- 🛠 **Learning project** — Built to learn browser extension development
 
 ---
 
 ## 🚀 Installation
+
+### Chrome
 
 Since this extension isn't on the Chrome Web Store, you'll need to load it manually:
 
@@ -85,6 +87,28 @@ Since this extension isn't on the Chrome Web Store, you'll need to load it manua
 
 ---
 
+### Firefox
+
+> ⚠️ **Important:** Firefox only supports loading unpacked extensions temporarily via `about:debugging`. This means **the extension will be removed every time you restart Firefox** and you'll need to reload it. If this is too inconvenient, use Chrome instead.
+
+1. **Download or clone this repository**
+   ```bash
+   git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
+   ```
+
+2. **Open Firefox debugging**  
+   Navigate to `about:debugging#/runtime/this-firefox`
+
+3. **Load the extension**  
+   Click **Load Temporary Add-on...** and select the `manifest.json` file inside the cloned folder
+
+4. **Pin it** *(optional)*  
+   Click the Extensions button in Firefox's toolbar and pin the extension for easy access
+
+> 🔁 You will need to repeat these steps every time you restart Firefox.
+
+---
+
 ## 📖 Usage
 
 1. Navigate to a keynote editor on sisedu.org  
@@ -96,7 +120,7 @@ Since this extension isn't on the Chrome Web Store, you'll need to load it manua
 
 4. The PDF will be downloaded automatically with the keynote's name as the filename
 
-> ⚠️ **Note:** The extension only works on sisedu.org keynote editor pages. Opening it elsewhere will show an overlay telling you to navigate there first.
+> ⚠ **Note:** The extension only works on sisedu.org keynote editor pages. Opening it elsewhere will show an overlay telling you to navigate there first.
 
 ---
 
@@ -151,10 +175,13 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.2
+- 🦊 Added Firefox support (temporary add-on via `about:debugging`)
+
 ### v1.0.1
 - 🔧 Fixed wrong PDF being downloaded on some keynotes
 - 🔍 Now checks network requests first before falling back to constructed URL
-- ⚠️ Better error status shown in popup on failed downloads
+- ⚠ Better error status shown in popup on failed downloads
 
 ### v1.0.0
 - 🎉 Initial release
@@ -191,6 +218,7 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 - 📋 Download history log
 - 🔔 Desktop notification on download complete
 - 📦 Chrome Web Store release
+- 📦 Firefox AMO release (permanent installation)
 
 ---
 
@@ -219,7 +247,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ### ⭐ Star this repo if you found it useful!
 
-**Made with ❤️ by [HimC29](https://github.com/HimC29)**
+**Made with ❤ by [HimC29](https://github.com/HimC29)**
 
 [Report Bug](https://github.com/HimC29/siseduorg-keynote-downloader/issues) • [Request Feature](https://github.com/HimC29/siseduorg-keynote-downloader/issues)
 

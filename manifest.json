@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "sisedu.org Keynote Downloader",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Download keynotes on sisedu.org as PDF easily with a click of a button.",
     "permissions": ["scripting", "activeTab", "tabs", "storage"],
     "icons": {
@@ -13,6 +13,12 @@
         "default_title": "Keynote Downloader"
     },
     "background": {
-        "service_worker": "background/service_worker.js"
+        "service_worker": "background/service_worker.js",
+        "scripts": ["background/service_worker.js"]
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "keynote-downloader@yourdomain.com"
+        }
     }
 }
