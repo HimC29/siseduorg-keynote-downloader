@@ -177,6 +177,7 @@ siseduorg-keynote-downloader/
 
 ### v1.0.2
 - 🦊 Added Firefox support (temporary add-on via `about:debugging`)
+- Thanks to [thousand2020](https://github.com/thousand2020) for [proof of concept and research](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/)
 
 ### v1.0.1
 - 🔧 Fixed wrong PDF being downloaded on some keynotes
@@ -219,6 +220,11 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 - 🔔 Desktop notification on download complete
 - 📦 Chrome Web Store release
 - 📦 Firefox AMO release (permanent installation)
+
+---
+
+## 🙏 Acknowledgements
+- [thousand2020](https://github.com/thousand2020) - [Firefox compatibility research and proof of concept](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/)
 
 ---
 
