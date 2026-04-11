@@ -4,7 +4,7 @@
 
 ### A Browser Extension to Download Keynotes from sisedu.org as PDF
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-yellow.svg?style=for-the-badge)](https://opensource.org/license/gpl-3.0)
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/)
 [![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://extensionworkshop.com/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -167,7 +167,7 @@ siseduorg-keynote-downloader/
 │   └── styles.css                 — Popup styling
 ├── injection-script/
 │   └── script.js                  — Injected into the page to fetch & download the PDF
-├── LICENSE                        — MIT License
+├── LICENSE                        — GPL v3 License
 └── README.md                      — Project documentation
 ```
 
@@ -245,7 +245,7 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GPL v3 License. See [LICENSE](/LICENSE) for more information.
 
 ---
 
