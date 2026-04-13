@@ -175,6 +175,9 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.4
+- 🦊 Made changes in manifest.json to have no errors in submitting to Mozilla Add-ons
+
 ### v1.0.3
 - 🦊 Improved Firefox compatibility (`chrome` → `browser` API)
 - 🧹 Removed unused `tabs` permission
