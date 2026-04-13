@@ -175,6 +175,11 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.3
+- 🦊 Improved Firefox compatibility (`chrome` → `browser` API)
+- 🧹 Removed unused `tabs` permission
+- 📜 Changed license from MIT to GPL v3.0
+
 ### v1.0.2
 - 🦊 Added Firefox support (temporary add-on via `about:debugging`)
 - Thanks to [thousand2020](https://github.com/thousand2020) for [proof of concept and research](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/)
