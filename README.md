@@ -120,7 +120,7 @@ Since this extension isn't on the Chrome Web Store, you'll need to load it manua
 
 4. The PDF will be downloaded automatically with the keynote's name as the filename
 
-> ⚠ **Note:** The extension only works on sisedu.org keynote editor pages. Opening it elsewhere will show an overlay telling you to navigate there first.
+> ⚠️ **Note:** The extension only works on sisedu.org keynote editor pages. Opening it elsewhere will show an overlay telling you to navigate there first.
 
 ---
 
