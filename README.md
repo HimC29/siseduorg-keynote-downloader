@@ -6,7 +6,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-yellow.svg?style=for-the-badge)](https://opensource.org/license/gpl-3.0)
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/)
-[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://extensionworkshop.com/)
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 **A lightweight browser extension that lets you download any keynote on sisedu.org as a PDF with a single click — no fiddling with the site required.**
@@ -89,12 +89,16 @@ Since this extension isn't on the Chrome Web Store, you'll need to load it manua
 
 ### Firefox
 
-> ⚠️ **Important:** Firefox only supports loading unpacked extensions temporarily via `about:debugging`. This means **the extension will be removed every time you restart Firefox** and you'll need to reload it. If this is too inconvenient, use Chrome instead.
+Install directly from the Mozilla Add-ons store — no manual loading required:
+
+**[➡ Install from Firefox Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/)**
+
+Or load it manually (temporary, removed on browser restart):
 
 1. **Download or clone this repository**
-   ```bash
+```bash
    git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
-   ```
+```
 
 2. **Open Firefox debugging**  
    Navigate to `about:debugging#/runtime/this-firefox`
@@ -102,10 +106,7 @@ Since this extension isn't on the Chrome Web Store, you'll need to load it manua
 3. **Load the extension**  
    Click **Load Temporary Add-on...** and select the `manifest.json` file inside the cloned folder
 
-4. **Pin it** *(optional)*  
-   Click the Extensions button in Firefox's toolbar and pin the extension for easy access
-
-> 🔁 You will need to repeat these steps every time you restart Firefox.
+> 🔁 Manual loading is temporary and will be removed when Firefox restarts. Use the AMO link above for a permanent install.
 
 ---
 
@@ -177,6 +178,7 @@ siseduorg-keynote-downloader/
 
 ### v1.0.4
 - 🦊 Made changes in manifest.json to have no errors in submitting to Mozilla Add-ons
+- 🦊 Published to [Mozilla Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/) — Firefox users can now install permanently without manual loading (Thanks to [thousand2020](https://github.com/thousand2020) for submitting and co-owning the Add On)
 
 ### v1.0.3
 - 🦊 Improved Firefox compatibility (`chrome` → `browser` API)
@@ -227,12 +229,11 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 - 📋 Download history log
 - 🔔 Desktop notification on download complete
 - 📦 Chrome Web Store release
-- 📦 Firefox AMO release (permanent installation)
 
 ---
 
 ## 🙏 Acknowledgements
-- [thousand2020](https://github.com/thousand2020) - [Firefox compatibility research and proof of concept](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/)
+- [thousand2020](https://github.com/thousand2020) - [Firefox compatibility research and proof of concept](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/) and [submitting and co-owning the Firefox Add-On](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/)
 
 ---
 
@@ -261,7 +262,7 @@ Distributed under the GPL v3 License. See [LICENSE](/LICENSE) for more informati
 
 ### ⭐ Star this repo if you found it useful!
 
-**Made with ❤ by [HimC29](https://github.com/HimC29)**
+**Made with ♥️ by [HimC29](https://github.com/HimC29)**
 
 [Report Bug](https://github.com/HimC29/siseduorg-keynote-downloader/issues) • [Request Feature](https://github.com/HimC29/siseduorg-keynote-downloader/issues)
 
