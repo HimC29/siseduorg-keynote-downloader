@@ -155,3 +155,11 @@ main {
     flex-shrink: 0;
     cursor: pointer;
 }
+
+.subject-header {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    padding: 2px 4px;
+    border-bottom: 1px solid #ccc;
+}
