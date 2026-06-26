@@ -72,7 +72,6 @@ Since this extension isn't on the Chrome Web Store, you'll need to load it manua
    ```bash
    git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
    ```
-
 2. **Open Chrome Extensions**  
    Navigate to `chrome://extensions/`
 
@@ -96,9 +95,9 @@ Install directly from the Mozilla Add-ons store — no manual loading required:
 Or load it manually (temporary, removed on browser restart):
 
 1. **Download or clone this repository**
-```bash
+   ```bash
    git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
-```
+   ```
 
 2. **Open Firefox debugging**  
    Navigate to `about:debugging#/runtime/this-firefox`
@@ -112,8 +111,8 @@ Or load it manually (temporary, removed on browser restart):
 
 ## 📖 Usage
 
-1. Navigate to a keynote editor on sisedu.org  
-   *(URL should match `sisedu.org/classroom/.../editor`)*
+1. Navigate to any keynote page on sisedu.org — works on both the editor and viewer  
+   *(URL should match `sisedu.org/student/classroom/.../`)*
 
 2. Click the extension icon in your toolbar
 
@@ -121,7 +120,7 @@ Or load it manually (temporary, removed on browser restart):
 
 4. The PDF will be downloaded automatically with the keynote's name as the filename
 
-> ⚠️ **Note:** The extension only works on sisedu.org keynote editor pages. Opening it elsewhere will show an overlay telling you to navigate there first.
+> ⚠️ **Note:** The extension only works on sisedu.org keynote pages. Opening it elsewhere will show an overlay telling you to navigate there first.
 
 ---
 
@@ -145,7 +144,7 @@ Popup click
 https://supabase.sisedu.org/storage/v1/object/public/coursework/{subject}/{grade}/{uuid}.pdf
 ```
 
-The UUID and metadata are extracted from the keynote module page by parsing its HTML.
+The UUID and metadata are extracted from the keynote page by parsing its HTML.
 
 ### Status Persistence
 
@@ -176,25 +175,34 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.5
+
+- 📄 Download now works on both the keynote editor **and** viewer pages — no need to switch to the editor first
+
 ### v1.0.4
+
 - 🦊 Made changes in manifest.json to have no errors in submitting to Mozilla Add-ons
 - 🦊 Published to [Mozilla Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/) — Firefox users can now install permanently without manual loading (Thanks to [thousand2020](https://github.com/thousand2020) for submitting and co-owning the Add On)
 
 ### v1.0.3
+
 - 🦊 Improved Firefox compatibility (`chrome` → `browser` API)
 - 🧹 Removed unused `tabs` permission
 - 📜 Changed license from MIT to GPL v3.0
 
 ### v1.0.2
+
 - 🦊 Added Firefox support (temporary add-on via `about:debugging`)
 - Thanks to [thousand2020](https://github.com/thousand2020) for [proof of concept and research](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/)
 
 ### v1.0.1
+
 - 🔧 Fixed wrong PDF being downloaded on some keynotes
 - 🔍 Now checks network requests first before falling back to constructed URL
-- ⚠️  Better error status shown in popup on failed downloads
+- ⚠️ Better error status shown in popup on failed downloads
 
 ### v1.0.0
+
 - 🎉 Initial release
 - One-click PDF download from keynote editor pages
 - Status feedback in popup
@@ -233,21 +241,25 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 ---
 
 ## 🙏 Acknowledgements
+
 - [thousand2020](https://github.com/thousand2020) - [Firefox compatibility research and proof of concept](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/) and [submitting and co-owning the Firefox Add-On](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/)
 
 ---
 
 ## 🐛 Troubleshooting
 
-### The overlay says "Open a keynote editor on sisedu.org first"
-- Make sure you're on a page with a URL matching `sisedu.org/.../editor`
+### The overlay says "Open a keynote on sisedu.org first"
+
+- Make sure you're on a keynote page with a URL matching `sisedu.org/student/classroom/...`
 - Try refreshing the page and reopening the extension
 
 ### Clicking download does nothing
+
 - Open Chrome DevTools on the popup (`chrome://extensions/` → **Inspect views: popup**) and check the console for errors
 - Make sure Developer Mode is enabled and the extension is loaded correctly
 
 ### Status is stuck on "Fetching PDF..."
+
 - The PDF URL may have changed — open an issue with the keynote URL pattern you're seeing
 
 ---

@@ -31,7 +31,7 @@ browser.storage.onChanged.addListener((changes, area) => {
 async function main() {
     const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
 
-    if (!tab.url.includes("sisedu.org") || !tab.url.includes("/editor")) {
+    if (!tab.url.includes("sisedu.org") || !tab.url.match(/\/classroom\/\d+\/\w+\/\d+/)) {
         document.getElementById("greyed").style.display = "flex";
         return;
     }
