@@ -23,26 +23,24 @@
 <tr>
 <td>
 
-📥 **One-Click Download**  
-Download the current keynote as a PDF instantly
+📥 **One-Click Download**&nbsp;&nbsp;&nbsp;Download the current keynote as a PDF instantly
 
-🔄 **Persistent Status**  
-Download progress is shown even if you close and reopen the popup
+📚 **Bulk Download by Subject**&nbsp;&nbsp;&nbsp;Select and download multiple keynotes at once from a subject page
 
-🔒 **Minimal Permissions**  
-Only requests what it needs — no unnecessary access
+🏫 **Classroom-Wide Download**&nbsp;&nbsp;&nbsp;Download keynotes across all your subjects from the classroom page
+
+🔄 **Persistent Status**&nbsp;&nbsp;&nbsp;Download progress is shown even if you close and reopen the popup
 
 </td>
 <td>
 
-⚡ **Lightweight**  
-No external dependencies, pure vanilla JS
+⚡ **Lightweight**&nbsp;&nbsp;&nbsp;No external dependencies, pure vanilla JS
 
-🎨 **Clean UI**  
-Simple, modern popup with clear status feedback
+🎨 **Clean UI**&nbsp;&nbsp;&nbsp;Simple, modern popup with clear status feedback
 
-🛡 **Background Worker**  
-Uses a service worker so downloads aren't interrupted
+🛡 **Background Worker**&nbsp;&nbsp;&nbsp;Uses a service worker so downloads aren't interrupted
+
+🔒 **Minimal Permissions**&nbsp;&nbsp;&nbsp;Only requests what it needs — no unnecessary access
 
 </td>
 </tr>
@@ -69,18 +67,15 @@ sisedu.org provides **no way to download keynotes** — there's no download butt
 Since this extension isn't on the Chrome Web Store, you'll need to load it manually:
 
 1. **Download or clone this repository**
-   ```bash
-   git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
-   ```
+  ```bash
+  git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
+  ```
 2. **Open Chrome Extensions**  
    Navigate to `chrome://extensions/`
-
 3. **Enable Developer Mode**  
    Toggle **Developer mode** in the top right corner
-
 4. **Load the extension**  
    Click **Load unpacked** and select the cloned folder
-
 5. **Pin it** *(optional)*  
    Click the puzzle icon in Chrome's toolbar and pin the extension for easy access
 
@@ -95,13 +90,11 @@ Install directly from the Mozilla Add-ons store — no manual loading required:
 Or load it manually (temporary, removed on browser restart):
 
 1. **Download or clone this repository**
-   ```bash
-   git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
-   ```
-
+  ```bash
+  git clone https://github.com/HimC29/siseduorg-keynote-downloader.git
+  ```
 2. **Open Firefox debugging**  
    Navigate to `about:debugging#/runtime/this-firefox`
-
 3. **Load the extension**  
    Click **Load Temporary Add-on...** and select the `manifest.json` file inside the cloned folder
 
@@ -111,35 +104,45 @@ Or load it manually (temporary, removed on browser restart):
 
 ## 📖 Usage
 
+The extension works differently depending on which page you're on:
+
+### Single Keynote Download
 1. Navigate to any keynote page on sisedu.org — works on both the editor and viewer  
-   *(URL should match `sisedu.org/student/classroom/.../`)*
-
+   *(URL looks like `sisedu.org/student/classroom/11/cs/5268`)*
 2. Click the extension icon in your toolbar
-
 3. Click **⬇ Download Keynote**
+4. The PDF downloads automatically with the keynote's name as the filename
 
-4. The PDF will be downloaded automatically with the keynote's name as the filename
+### Bulk Download by Subject
+1. Navigate to a subject page *(URL looks like `sisedu.org/student/classroom/11/cs`)*
+2. Click the extension icon — a checklist of all keynotes in that subject appears
+3. Check the ones you want (or use **Select All**)
+4. Click **⬇ Download Selected**
 
-> ⚠️ **Note:** The extension only works on sisedu.org keynote pages. Opening it elsewhere will show an overlay telling you to navigate there first.
+### Classroom-Wide Download
+1. Navigate to your classroom page *(URL looks like `sisedu.org/student/classroom/11`)*
+2. Click the extension icon — it loads all your subjects and lists every keynote grouped by subject
+3. Check the ones you want across any subject (or use **Select All**)
+4. Click **⬇ Download Selected**
+
+> ⚠ **Note:** The extension only works on sisedu.org pages. Opening it elsewhere will show an overlay telling you to navigate there first.
 
 ---
 
 ## 🔧 How It Works
 
 ### Flow
-
 ```
 Popup click
-    └─► Background service worker
-            └─► Injects script.js into the active tab
-                    ├─► Fetches keynote metadata (name, UUID) from the page
-                    ├─► Constructs the Supabase PDF storage URL
-                    ├─► Fetches the PDF blob
-                    └─► Triggers a download & reports status back
+   └─► Background service worker
+           └─► Injects script.js into the active tab
+                   ├─► Fetches keynote metadata (name, UUID) from the page
+                   ├─► Constructs the Supabase PDF storage URL
+                   ├─► Fetches the PDF blob
+                   └─► Triggers a download & reports status back
 ```
 
 ### PDF URL Structure
-
 ```
 https://supabase.sisedu.org/storage/v1/object/public/coursework/{subject}/{grade}/{uuid}.pdf
 ```
@@ -147,7 +150,6 @@ https://supabase.sisedu.org/storage/v1/object/public/coursework/{subject}/{grade
 The UUID and metadata are extracted from the keynote page by parsing its HTML.
 
 ### Status Persistence
-
 Status messages (e.g. `"Fetching PDF..."`, `"Download complete!"`) are saved to `chrome.storage.session` by the background service worker. When you reopen the popup mid-download, it reads the last known status so you're never left wondering what's happening.
 
 ---
@@ -175,38 +177,34 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
-### v1.0.6
+### v1.0.7
+- 🏫 Download keynotes across **all subjects** from the classroom page (`/classroom/11`) — keynotes are grouped by subject with checkboxes
 
+### v1.0.6
 - 📚 Bulk download keynotes from a subject page — select individual keynotes or all at once with checkboxes
 
 ### v1.0.5
-
 - 📄 Download now works on both the keynote editor **and** viewer pages — no need to switch to the editor first
 
 ### v1.0.4
-
 - 🦊 Made changes in manifest.json to have no errors in submitting to Mozilla Add-ons
 - 🦊 Published to [Mozilla Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/sisedu-org-keynote-downloader/) — Firefox users can now install permanently without manual loading (Thanks to [thousand2020](https://github.com/thousand2020) for submitting and co-owning the Add On)
 
 ### v1.0.3
-
 - 🦊 Improved Firefox compatibility (`chrome` → `browser` API)
 - 🧹 Removed unused `tabs` permission
 - 📜 Changed license from MIT to GPL v3.0
 
 ### v1.0.2
-
 - 🦊 Added Firefox support (temporary add-on via `about:debugging`)
 - Thanks to [thousand2020](https://github.com/thousand2020) for [proof of concept and research](https://github.com/thousand2020/siseduorg-keynote-downloader-firefox/)
 
 ### v1.0.1
-
 - 🔧 Fixed wrong PDF being downloaded on some keynotes
 - 🔍 Now checks network requests first before falling back to constructed URL
-- ⚠️ Better error status shown in popup on failed downloads
+- ⚠ Better error status shown in popup on failed downloads
 
 ### v1.0.0
-
 - 🎉 Initial release
 - One-click PDF download from keynote editor pages
 - Status feedback in popup
@@ -222,17 +220,17 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 
 1. **Fork the Project**
 2. **Create your Feature Branch**
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
+  ```bash
+  git checkout -b feature/AmazingFeature
+  ```
 3. **Commit your Changes**
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
+  ```bash
+  git commit -m 'Add some AmazingFeature'
+  ```
 4. **Push to the Branch**
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
+  ```bash
+  git push origin feature/AmazingFeature
+  ```
 5. **Open a Pull Request**
 
 ### Ideas for Contributions
@@ -253,18 +251,18 @@ Contributions are welcome! If you find a bug or want to improve the extension, f
 ## 🐛 Troubleshooting
 
 ### The overlay says "Open a keynote on sisedu.org first"
-
-- Make sure you're on a keynote page with a URL matching `sisedu.org/student/classroom/...`
+- Make sure you're on a keynote page, subject page, or classroom page on sisedu.org
 - Try refreshing the page and reopening the extension
 
 ### Clicking download does nothing
-
 - Open Chrome DevTools on the popup (`chrome://extensions/` → **Inspect views: popup**) and check the console for errors
 - Make sure Developer Mode is enabled and the extension is loaded correctly
 
 ### Status is stuck on "Fetching PDF..."
-
 - The PDF URL may have changed — open an issue with the keynote URL pattern you're seeing
+
+### Classroom-wide download shows no keynotes for a subject
+- Navigate to that subject page manually first to confirm keynotes exist there
 
 ---
 
@@ -278,7 +276,7 @@ Distributed under the GPL v3 License. See [LICENSE](/LICENSE) for more informati
 
 ### ⭐ Star this repo if you found it useful!
 
-**Made with ♥️ by [HimC29](https://github.com/HimC29)**
+**Made with ❤️ by [HimC29](https://github.com/HimC29)**
 
 [Report Bug](https://github.com/HimC29/siseduorg-keynote-downloader/issues) • [Request Feature](https://github.com/HimC29/siseduorg-keynote-downloader/issues)
 
