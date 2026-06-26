@@ -175,6 +175,10 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.6
+
+- 📚 Bulk download keynotes from a subject page — select individual keynotes or all at once with checkboxes
+
 ### v1.0.5
 
 - 📄 Download now works on both the keynote editor **and** viewer pages — no need to switch to the editor first
