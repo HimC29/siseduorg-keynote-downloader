@@ -14,56 +14,56 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-async function getKeynoteInfo() {
-    const moduleUrl = window.location.href.replace('/editor', '');
-    const r = await fetch(moduleUrl);
-    const html = await r.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const name = doc.querySelector('.text-center.text-lg.font-bold').textContent.trim();
-    const uuids = html.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/g);
-    const uuid = [...new Set(uuids)].at(-1);
-    const parts = window.location.href.match(/\/classroom\/(\d+)\/(\w+)\//);
+(async () => {
+    chrome.runtime.sendMessage({ status: "Loading keynote page..." });
+
+    // Get keynote name from the page
+    const parts = window.location.href.match(/\/classroom\/(\d+)\/(\w+)\/(\d+)/);
     const grade = parts[1];
     const subject = parts[2];
-    return { name, uuid, grade, subject };
-}
+    const moduleId = parts[3];
 
-async function findPdfUrl(subject, grade, uuid) {
-    // try from network entries first
-    const entries = performance.getEntriesByType("resource");
-    const fromNetwork = entries
-        .map(e => e.name)
-        .find(url => url.includes(subject) && url.includes(uuid));
+    // Get the name from the page heading
+    const nameEl = document.querySelector('.text-center.text-lg.font-bold') 
+        || document.querySelector('h1');
+    const name = nameEl ? nameEl.textContent.trim() : `keynote-${moduleId}`;
 
-    if(fromNetwork)
-        return fromNetwork;
+    // Intercept fetch to catch the PDF url the page loads
+    chrome.runtime.sendMessage({ status: "Waiting for PDF to load..." });
 
-    // fall back to constructed URL
-    return `https://supabase.sisedu.org/storage/v1/object/public/coursework/${subject}/${grade}/${uuid}.pdf`;
-}
+    const pdfUrl = await new Promise((resolve) => {
+        const origFetch = window.fetch;
+        window.fetch = function(...args) {
+            const url = typeof args[0] === 'string' ? args[0] : args[0]?.url;
+            if (url && url.includes('storage') && url.includes('.pdf')) {
+                resolve(url);
+                window.fetch = origFetch;
+            }
+            return origFetch.apply(this, args);
+        };
 
-(async () => {
-    chrome.runtime.sendMessage({ status: "Fetching keynote info..." });
+        // Timeout after 15s
+        setTimeout(() => {
+            window.fetch = origFetch;
+            resolve(null);
+        }, 15000);
+    });
 
-    const { name, uuid, grade, subject } = await getKeynoteInfo();
-    const url = await findPdfUrl(subject, grade, uuid);
+    if (!pdfUrl) {
+        chrome.runtime.sendMessage({ status: "Could not find PDF — try scrolling the keynote first." });
+        return;
+    }
 
     chrome.runtime.sendMessage({ status: "Fetching PDF..." });
-    console.log("Fetching:", url);
-
-    const res = await fetch(url);
-    if(!res.ok) {
+    const res = await fetch(pdfUrl);
+    if (!res.ok) {
         chrome.runtime.sendMessage({ status: `Failed: ${res.status}` });
-        console.log("Failed to fetch PDF:", res.status);
-    }
-    else {
+    } else {
         const blob = await res.blob();
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
         a.download = `${name}.pdf`;
         a.click();
         chrome.runtime.sendMessage({ status: "Download complete!" });
-        console.log("Download complete:", name);
     }
 })();

@@ -8,9 +8,8 @@
 </head>
 <body>
     <div id="greyed">
-        <span>⚠️ Open a keynote editor<br>on sisedu.org first.</span>
+        <span>⚠ Open a keynote page<br>on sisedu.org first.</span>
     </div>
-
     <header>
         <img src="../media/logo.png" alt="Logo" id="logo">
         <div>
@@ -18,13 +17,25 @@
             <p>sisedu.org</p>
         </div>
     </header>
-
     <main>
-        <p class="hint">Click the button below to download the current keynote as a PDF.</p>
-        <button id="download">⬇ Download Keynote</button>
-        <div id="status"></div>
-    </main>
+        <!-- Single keynote view (on /subject/id or /subject/id/editor) -->
+        <div id="single-view">
+            <p class="hint">Click the button below to download the current keynote as a PDF.</p>
+            <button id="download">⬇ Download Keynote</button>
+            <div id="status"></div>
+        </div>
 
+        <!-- Subject view (on /subject) -->
+        <div id="bulk-view" style="display:none">
+            <p class="hint">Select keynotes to download:</p>
+            <div id="select-all-row">
+                <label><input type="checkbox" id="select-all"> Select All</label>
+            </div>
+            <div id="keynote-list"></div>
+            <button id="bulk-download" disabled>⬇ Download Selected</button>
+            <div id="bulk-status"></div>
+        </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
