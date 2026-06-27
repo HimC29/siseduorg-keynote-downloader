@@ -177,6 +177,9 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.8
+- 📔 Fix issue 4 where keynotes cannot be downloaded individually.
+
 ### v1.0.7
 - 🏫 Download keynotes across **all subjects** from the classroom page (`/classroom/11`) — keynotes are grouped by subject with checkboxes
 
