@@ -177,6 +177,9 @@ siseduorg-keynote-downloader/
 
 ## 📝 Changelog
 
+### v1.0.9
+- 🐞 Fix issue 3 where some keynotes cannot be downloaded.
+
 ### v1.0.8
 - 📔 Fix issue 4 where keynotes cannot be downloaded individually.
 

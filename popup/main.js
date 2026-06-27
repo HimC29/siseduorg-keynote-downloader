@@ -198,9 +198,22 @@ async function loadClassroomView(tab) {
                     const pageUrl = `${window.location.origin}/student/classroom/${grade}/${subject}/${id}`;
                     const r = await fetch(pageUrl);
                     const html = await r.text();
-                    const uuids = html.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/g);
-                    const uuid = [...new Set(uuids)].at(-1);
-                    const pdfUrl = `https://supabase.sisedu.org/storage/v1/object/public/coursework/${subject}/${grade}/${uuid}.pdf`;
+                    const parser = new DOMParser();
+					const doc = parser.parseFromString(html, "text/html");
+					const scripts = doc.querySelectorAll("script[data-sveltekit-fetched]");
+					let filePath = null;
+					for (const script of scripts) {
+					    try {
+					        const json = JSON.parse(script.textContent);
+					        const body = JSON.parse(json.body);
+					        if (body.modules_pdf?.file_path) {
+					            filePath = body.modules_pdf.file_path;
+					            break;
+					        }
+					    } catch {}
+					}
+					if (!filePath) throw new Error("Could not find PDF path");
+					const pdfUrl = `https://supabase.sisedu.org/storage/v1/object/public/coursework/${filePath}`;
                     const res = await fetch(pdfUrl);
                     if (!res.ok) throw new Error(`Failed: ${res.status}`);
                     const blob = await res.blob();
